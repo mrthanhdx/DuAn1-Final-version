@@ -4,19 +4,35 @@
  */
 package view;
 
+import java.awt.BorderLayout;
+import javax.swing.JPanel;
+
 /**
  *
  * @author trant
  */
 public class mainView extends javax.swing.JFrame {
 
+    private JPanel childPanel;
+
     /**
      * Creates new form mainView
      */
     public mainView() {
+        
         initComponents();
+        setLocationRelativeTo(null);
+        setpanel(new addProperties());
+      
     }
-
+    
+      
+      private void setpanel(JPanel panel) {
+        childPanel = panel;
+        pnmain.removeAll();
+        pnmain.add(childPanel);
+        pnmain.validate();
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -27,7 +43,7 @@ public class mainView extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel2 = new javax.swing.JPanel();
-        jPanel1 = new javax.swing.JPanel();
+        pnmain = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
@@ -38,15 +54,18 @@ public class mainView extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         btnBill = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
+        btnProperties = new javax.swing.JPanel();
+        jLabel10 = new javax.swing.JLabel();
         btnStatistics = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        btnSaleStaff = new javax.swing.JPanel();
-        jLabel7 = new javax.swing.JLabel();
         btnCustomer = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
+        btnSaleStaff = new javax.swing.JPanel();
+        jLabel7 = new javax.swing.JLabel();
         btnExit = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
+        btnBill1 = new javax.swing.JPanel();
+        jLabel8 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -54,24 +73,15 @@ public class mainView extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(102, 204, 255));
         jPanel2.setLayout(null);
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 936, Short.MAX_VALUE)
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 580, Short.MAX_VALUE)
-        );
-
-        jPanel2.add(jPanel1);
-        jPanel1.setBounds(140, 63, 936, 580);
+        pnmain.setBackground(new java.awt.Color(255, 255, 255));
+        pnmain.setLayout(new java.awt.BorderLayout());
+        jPanel2.add(pnmain);
+        pnmain.setBounds(140, 60, 940, 580);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/header1.png"))); // NOI18N
         jLabel1.setText(" ");
         jPanel2.add(jLabel1);
-        jLabel1.setBounds(290, 0, 500, 70);
+        jLabel1.setBounds(290, -10, 500, 80);
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -121,20 +131,27 @@ public class mainView extends javax.swing.JFrame {
         jPanel2.add(jPanel5);
         jPanel5.setBounds(0, 0, 250, 60);
 
-        btnProduct.setBackground(new java.awt.Color(102, 204, 255));
+        btnProduct.setBackground(new java.awt.Color(255, 51, 255));
+        btnProduct.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        btnProduct.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnProductMouseClicked(evt);
+            }
+        });
 
-        jLabel3.setBackground(new java.awt.Color(102, 204, 255));
+        jLabel3.setBackground(new java.awt.Color(255, 255, 255));
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(51, 51, 51));
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/product.png"))); // NOI18N
         jLabel3.setText("Product");
-        jLabel3.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         javax.swing.GroupLayout btnProductLayout = new javax.swing.GroupLayout(btnProduct);
         btnProduct.setLayout(btnProductLayout);
         btnProductLayout.setHorizontalGroup(
             btnProductLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
+            .addGroup(btnProductLayout.createSequentialGroup()
+                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 18, Short.MAX_VALUE))
         );
         btnProductLayout.setVerticalGroup(
             btnProductLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -146,21 +163,26 @@ public class mainView extends javax.swing.JFrame {
         jPanel2.add(btnProduct);
         btnProduct.setBounds(0, 60, 140, 60);
 
-        btnSale.setBackground(new java.awt.Color(102, 204, 255));
+        btnSale.setBackground(new java.awt.Color(255, 204, 255));
+        btnSale.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        btnSale.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnSaleMouseClicked(evt);
+            }
+        });
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(51, 51, 51));
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/shopping32px.png"))); // NOI18N
         jLabel4.setText("Sale");
-        jLabel4.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         javax.swing.GroupLayout btnSaleLayout = new javax.swing.GroupLayout(btnSale);
         btnSale.setLayout(btnSaleLayout);
         btnSaleLayout.setHorizontalGroup(
             btnSaleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnSaleLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(btnSaleLayout.createSequentialGroup()
+                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(52, Short.MAX_VALUE))
         );
         btnSaleLayout.setVerticalGroup(
             btnSaleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -172,55 +194,75 @@ public class mainView extends javax.swing.JFrame {
         jPanel2.add(btnSale);
         btnSale.setBounds(0, 120, 140, 60);
 
-        btnBill.setBackground(new java.awt.Color(102, 204, 255));
+        btnBill.setBackground(new java.awt.Color(255, 204, 255));
+        btnBill.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(51, 51, 51));
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/validating-ticket.png"))); // NOI18N
         jLabel5.setText("Bill");
-        jLabel5.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         javax.swing.GroupLayout btnBillLayout = new javax.swing.GroupLayout(btnBill);
         btnBill.setLayout(btnBillLayout);
         btnBillLayout.setHorizontalGroup(
             btnBillLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(btnBillLayout.createSequentialGroup()
-                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(52, Short.MAX_VALUE))
         );
         btnBillLayout.setVerticalGroup(
             btnBillLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnBillLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(btnBillLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel2.add(btnBill);
-        btnBill.setBounds(0, 240, 140, 60);
+        btnBill.setBounds(0, 240, 140, 70);
 
-        jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/product.png"))); // NOI18N
-        jLabel8.setText("Promotion");
-        jLabel8.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jPanel2.add(jLabel8);
-        jLabel8.setBounds(0, 180, 140, 60);
+        btnProperties.setBackground(new java.awt.Color(255, 204, 255));
+        btnProperties.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        btnStatistics.setBackground(new java.awt.Color(102, 204, 255));
+        jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/user24px.png"))); // NOI18N
+        jLabel10.setText("Properties");
+
+        javax.swing.GroupLayout btnPropertiesLayout = new javax.swing.GroupLayout(btnProperties);
+        btnProperties.setLayout(btnPropertiesLayout);
+        btnPropertiesLayout.setHorizontalGroup(
+            btnPropertiesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(btnPropertiesLayout.createSequentialGroup()
+                .addComponent(jLabel10)
+                .addGap(0, 21, Short.MAX_VALUE))
+        );
+        btnPropertiesLayout.setVerticalGroup(
+            btnPropertiesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnPropertiesLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+
+        jPanel2.add(btnProperties);
+        btnProperties.setBounds(0, 304, 140, 70);
+
+        btnStatistics.setBackground(new java.awt.Color(255, 204, 255));
+        btnStatistics.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(51, 51, 51));
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/chart.png"))); // NOI18N
         jLabel2.setText("statistics");
-        jLabel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         javax.swing.GroupLayout btnStatisticsLayout = new javax.swing.GroupLayout(btnStatistics);
         btnStatistics.setLayout(btnStatisticsLayout);
         btnStatisticsLayout.setHorizontalGroup(
             btnStatisticsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnStatisticsLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(btnStatisticsLayout.createSequentialGroup()
+                .addComponent(jLabel2)
+                .addGap(0, 26, Short.MAX_VALUE))
         );
         btnStatisticsLayout.setVerticalGroup(
             btnStatisticsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -230,75 +272,76 @@ public class mainView extends javax.swing.JFrame {
         );
 
         jPanel2.add(btnStatistics);
-        btnStatistics.setBounds(0, 300, 140, 60);
+        btnStatistics.setBounds(0, 374, 140, 70);
 
-        btnSaleStaff.setBackground(new java.awt.Color(102, 204, 255));
-
-        jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/user32px.png"))); // NOI18N
-        jLabel7.setText("Sales Staff");
-        jLabel7.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-
-        javax.swing.GroupLayout btnSaleStaffLayout = new javax.swing.GroupLayout(btnSaleStaff);
-        btnSaleStaff.setLayout(btnSaleStaffLayout);
-        btnSaleStaffLayout.setHorizontalGroup(
-            btnSaleStaffLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnSaleStaffLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-        btnSaleStaffLayout.setVerticalGroup(
-            btnSaleStaffLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnSaleStaffLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-
-        jPanel2.add(btnSaleStaff);
-        btnSaleStaff.setBounds(0, 420, 140, 60);
-
-        btnCustomer.setBackground(new java.awt.Color(102, 204, 255));
+        btnCustomer.setBackground(new java.awt.Color(255, 204, 255));
+        btnCustomer.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(51, 51, 51));
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/user24px.png"))); // NOI18N
         jLabel6.setText("Customer");
-        jLabel6.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         javax.swing.GroupLayout btnCustomerLayout = new javax.swing.GroupLayout(btnCustomer);
         btnCustomer.setLayout(btnCustomerLayout);
         btnCustomerLayout.setHorizontalGroup(
             btnCustomerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(btnCustomerLayout.createSequentialGroup()
-                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addComponent(jLabel6)
+                .addGap(0, 27, Short.MAX_VALUE))
         );
         btnCustomerLayout.setVerticalGroup(
             btnCustomerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(btnCustomerLayout.createSequentialGroup()
+                .addContainerGap()
                 .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel2.add(btnCustomer);
-        btnCustomer.setBounds(0, 360, 140, 60);
+        btnCustomer.setBounds(0, 440, 140, 70);
 
-        btnExit.setBackground(new java.awt.Color(102, 204, 255));
+        btnSaleStaff.setBackground(new java.awt.Color(255, 204, 255));
+        btnSaleStaff.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
+        jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/user32px.png"))); // NOI18N
+        jLabel7.setText("Sales Staff");
+
+        javax.swing.GroupLayout btnSaleStaffLayout = new javax.swing.GroupLayout(btnSaleStaff);
+        btnSaleStaff.setLayout(btnSaleStaffLayout);
+        btnSaleStaffLayout.setHorizontalGroup(
+            btnSaleStaffLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(btnSaleStaffLayout.createSequentialGroup()
+                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 11, Short.MAX_VALUE))
+        );
+        btnSaleStaffLayout.setVerticalGroup(
+            btnSaleStaffLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(btnSaleStaffLayout.createSequentialGroup()
+                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 14, Short.MAX_VALUE))
+        );
+
+        jPanel2.add(btnSaleStaff);
+        btnSaleStaff.setBounds(0, 510, 140, 70);
+
+        btnExit.setBackground(new java.awt.Color(255, 204, 255));
+        btnExit.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(51, 51, 51));
         jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/logout.png"))); // NOI18N
         jLabel9.setText("Exit");
-        jLabel9.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         javax.swing.GroupLayout btnExitLayout = new javax.swing.GroupLayout(btnExit);
         btnExit.setLayout(btnExitLayout);
         btnExitLayout.setHorizontalGroup(
             btnExitLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnExitLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(btnExitLayout.createSequentialGroup()
+                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 64, Short.MAX_VALUE))
         );
         btnExitLayout.setVerticalGroup(
             btnExitLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -308,12 +351,46 @@ public class mainView extends javax.swing.JFrame {
         );
 
         jPanel2.add(btnExit);
-        btnExit.setBounds(0, 480, 140, 60);
+        btnExit.setBounds(0, 574, 140, 70);
+
+        btnBill1.setBackground(new java.awt.Color(255, 204, 255));
+        btnBill1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
+        jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/coupon.png"))); // NOI18N
+        jLabel8.setText("Promotion");
+
+        javax.swing.GroupLayout btnBill1Layout = new javax.swing.GroupLayout(btnBill1);
+        btnBill1.setLayout(btnBill1Layout);
+        btnBill1Layout.setHorizontalGroup(
+            btnBill1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(btnBill1Layout.createSequentialGroup()
+                .addComponent(jLabel8)
+                .addGap(0, 10, Short.MAX_VALUE))
+        );
+        btnBill1Layout.setVerticalGroup(
+            btnBill1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnBill1Layout.createSequentialGroup()
+                .addGap(0, 6, Short.MAX_VALUE)
+                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+
+        jPanel2.add(btnBill1);
+        btnBill1.setBounds(0, 180, 140, 60);
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1070, 640));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnProductMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnProductMouseClicked
+        setpanel(new addProperties());
+    }//GEN-LAST:event_btnProductMouseClicked
+
+    private void btnSaleMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSaleMouseClicked
+        setpanel(new sanPhamView());
+    }//GEN-LAST:event_btnSaleMouseClicked
 
     /**
      * @param args the command line arguments
@@ -352,13 +429,16 @@ public class mainView extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel btnBill;
+    private javax.swing.JPanel btnBill1;
     private javax.swing.JPanel btnCustomer;
     private javax.swing.JPanel btnExit;
     private javax.swing.JPanel btnProduct;
+    private javax.swing.JPanel btnProperties;
     private javax.swing.JPanel btnSale;
     private javax.swing.JPanel btnSaleStaff;
     private javax.swing.JPanel btnStatistics;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -367,10 +447,10 @@ public class mainView extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel pnmain;
     // End of variables declaration//GEN-END:variables
 }
