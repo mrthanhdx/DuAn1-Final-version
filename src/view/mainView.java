@@ -4,7 +4,6 @@
  */
 package view;
 
-import java.awt.BorderLayout;
 import javax.swing.JPanel;
 
 /**
@@ -19,20 +18,20 @@ public class mainView extends javax.swing.JFrame {
      * Creates new form mainView
      */
     public mainView() {
-        
+
         initComponents();
         setLocationRelativeTo(null);
-        setpanel(new addProperties());
-      
+        setpanel(new productView());
+
     }
-    
-      
-      private void setpanel(JPanel panel) {
+
+    private void setpanel(JPanel panel) {
         childPanel = panel;
         pnmain.removeAll();
         pnmain.add(childPanel);
         pnmain.validate();
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -60,8 +59,6 @@ public class mainView extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         btnCustomer = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
-        btnSaleStaff = new javax.swing.JPanel();
-        jLabel7 = new javax.swing.JLabel();
         btnExit = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
         btnBill1 = new javax.swing.JPanel();
@@ -70,10 +67,11 @@ public class mainView extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel2.setBackground(new java.awt.Color(102, 204, 255));
+        jPanel2.setBackground(new java.awt.Color(255, 204, 255));
         jPanel2.setLayout(null);
 
         pnmain.setBackground(new java.awt.Color(255, 255, 255));
+        pnmain.setMaximumSize(new java.awt.Dimension(940, 580));
         pnmain.setLayout(new java.awt.BorderLayout());
         jPanel2.add(pnmain);
         pnmain.setBounds(140, 60, 940, 580);
@@ -196,11 +194,21 @@ public class mainView extends javax.swing.JFrame {
 
         btnBill.setBackground(new java.awt.Color(255, 204, 255));
         btnBill.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        btnBill.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnBillMouseClicked(evt);
+            }
+        });
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(51, 51, 51));
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/validating-ticket.png"))); // NOI18N
-        jLabel5.setText("Bill");
+        jLabel5.setText("Invoice");
+        jLabel5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel5MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout btnBillLayout = new javax.swing.GroupLayout(btnBill);
         btnBill.setLayout(btnBillLayout);
@@ -208,8 +216,8 @@ public class mainView extends javax.swing.JFrame {
             btnBillLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(btnBillLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(52, Short.MAX_VALUE))
+                .addComponent(jLabel5)
+                .addContainerGap(32, Short.MAX_VALUE))
         );
         btnBillLayout.setVerticalGroup(
             btnBillLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -224,11 +232,21 @@ public class mainView extends javax.swing.JFrame {
 
         btnProperties.setBackground(new java.awt.Color(255, 204, 255));
         btnProperties.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        btnProperties.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnPropertiesMouseClicked(evt);
+            }
+        });
 
         jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(51, 51, 51));
         jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/user24px.png"))); // NOI18N
         jLabel10.setText("Properties");
+        jLabel10.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel10MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout btnPropertiesLayout = new javax.swing.GroupLayout(btnProperties);
         btnProperties.setLayout(btnPropertiesLayout);
@@ -250,11 +268,21 @@ public class mainView extends javax.swing.JFrame {
 
         btnStatistics.setBackground(new java.awt.Color(255, 204, 255));
         btnStatistics.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        btnStatistics.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnStatisticsMouseClicked(evt);
+            }
+        });
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(51, 51, 51));
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/chart.png"))); // NOI18N
         jLabel2.setText("statistics");
+        jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel2MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout btnStatisticsLayout = new javax.swing.GroupLayout(btnStatistics);
         btnStatistics.setLayout(btnStatisticsLayout);
@@ -301,32 +329,6 @@ public class mainView extends javax.swing.JFrame {
         jPanel2.add(btnCustomer);
         btnCustomer.setBounds(0, 440, 140, 70);
 
-        btnSaleStaff.setBackground(new java.awt.Color(255, 204, 255));
-        btnSaleStaff.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-
-        jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/user32px.png"))); // NOI18N
-        jLabel7.setText("Sales Staff");
-
-        javax.swing.GroupLayout btnSaleStaffLayout = new javax.swing.GroupLayout(btnSaleStaff);
-        btnSaleStaff.setLayout(btnSaleStaffLayout);
-        btnSaleStaffLayout.setHorizontalGroup(
-            btnSaleStaffLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(btnSaleStaffLayout.createSequentialGroup()
-                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 11, Short.MAX_VALUE))
-        );
-        btnSaleStaffLayout.setVerticalGroup(
-            btnSaleStaffLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(btnSaleStaffLayout.createSequentialGroup()
-                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 14, Short.MAX_VALUE))
-        );
-
-        jPanel2.add(btnSaleStaff);
-        btnSaleStaff.setBounds(0, 510, 140, 70);
-
         btnExit.setBackground(new java.awt.Color(255, 204, 255));
         btnExit.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
@@ -351,15 +353,25 @@ public class mainView extends javax.swing.JFrame {
         );
 
         jPanel2.add(btnExit);
-        btnExit.setBounds(0, 574, 140, 70);
+        btnExit.setBounds(0, 510, 140, 60);
 
         btnBill1.setBackground(new java.awt.Color(255, 204, 255));
         btnBill1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        btnBill1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnBill1MouseClicked(evt);
+            }
+        });
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(51, 51, 51));
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/coupon.png"))); // NOI18N
         jLabel8.setText("Promotion");
+        jLabel8.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel8MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout btnBill1Layout = new javax.swing.GroupLayout(btnBill1);
         btnBill1.setLayout(btnBill1Layout);
@@ -385,12 +397,44 @@ public class mainView extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnProductMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnProductMouseClicked
-        setpanel(new addProperties());
+        setpanel(new productView());
     }//GEN-LAST:event_btnProductMouseClicked
 
     private void btnSaleMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSaleMouseClicked
-        setpanel(new sanPhamView());
+        setpanel(new sellProductView());
     }//GEN-LAST:event_btnSaleMouseClicked
+
+    private void btnBillMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBillMouseClicked
+        setpanel(new detailInvoiceView());
+    }//GEN-LAST:event_btnBillMouseClicked
+
+    private void btnPropertiesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPropertiesMouseClicked
+        setpanel(new addProperties());
+    }//GEN-LAST:event_btnPropertiesMouseClicked
+
+    private void btnBill1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBill1MouseClicked
+        setpanel(new promotionalView());
+    }//GEN-LAST:event_btnBill1MouseClicked
+
+    private void jLabel8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel8MouseClicked
+        setpanel(new promotionalView());
+    }//GEN-LAST:event_jLabel8MouseClicked
+
+    private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked
+        setpanel(new detailInvoiceView());
+    }//GEN-LAST:event_jLabel5MouseClicked
+
+    private void jLabel10MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel10MouseClicked
+        setpanel(new addProperties());
+    }//GEN-LAST:event_jLabel10MouseClicked
+
+    private void btnStatisticsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnStatisticsMouseClicked
+        setpanel(new statisticView());
+    }//GEN-LAST:event_btnStatisticsMouseClicked
+
+    private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
+        setpanel(new statisticView());
+    }//GEN-LAST:event_jLabel2MouseClicked
 
     /**
      * @param args the command line arguments
@@ -435,7 +479,6 @@ public class mainView extends javax.swing.JFrame {
     private javax.swing.JPanel btnProduct;
     private javax.swing.JPanel btnProperties;
     private javax.swing.JPanel btnSale;
-    private javax.swing.JPanel btnSaleStaff;
     private javax.swing.JPanel btnStatistics;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -444,7 +487,6 @@ public class mainView extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel2;
