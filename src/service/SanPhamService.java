@@ -4,10 +4,16 @@
  */
 package service;
 
+import connection.ConenctionProvider;
+
 /**
  *
  * @author H
  */
 public class SanPhamService {
+    
+    ConenctionProvider con = new ConenctionProvider();
+    
+    
     
 }
