@@ -11,7 +11,7 @@ package connection;
 public class SanPham {
     private String id;
     private String ten;
-    private String tuoi;
+
    
     
 }
