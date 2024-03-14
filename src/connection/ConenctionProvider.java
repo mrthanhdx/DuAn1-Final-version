@@ -3,7 +3,7 @@ package connection;
 import java.sql.*;
 
 public class ConenctionProvider {
-
+    // Connection
     private static Connection conn;
     private static String DB_SERVERNAME = "localhost";
     private static String DB_DATABASENAME = "Duan1";
