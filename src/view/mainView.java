@@ -5,7 +5,6 @@
 package view;
 
 import javax.swing.JPanel;
-
 /**
  *
  * @author trant
@@ -21,7 +20,7 @@ public class mainView extends javax.swing.JFrame {
 
         initComponents();
         setLocationRelativeTo(null);
-        setpanel(new productView());
+        setpanel(new SanPham());
 
     }
 
@@ -63,6 +62,8 @@ public class mainView extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         btnBill1 = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
+        btnNhanVien = new javax.swing.JPanel();
+        jLabel11 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -141,7 +142,7 @@ public class mainView extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(51, 51, 51));
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/product.png"))); // NOI18N
-        jLabel3.setText("Product");
+        jLabel3.setText("Sản Phẩm");
 
         javax.swing.GroupLayout btnProductLayout = new javax.swing.GroupLayout(btnProduct);
         btnProduct.setLayout(btnProductLayout);
@@ -172,15 +173,13 @@ public class mainView extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(51, 51, 51));
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/shopping32px.png"))); // NOI18N
-        jLabel4.setText("Sale");
+        jLabel4.setText("Bán Hàng");
 
         javax.swing.GroupLayout btnSaleLayout = new javax.swing.GroupLayout(btnSale);
         btnSale.setLayout(btnSaleLayout);
         btnSaleLayout.setHorizontalGroup(
             btnSaleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(btnSaleLayout.createSequentialGroup()
-                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(52, Short.MAX_VALUE))
+            .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 136, Short.MAX_VALUE)
         );
         btnSaleLayout.setVerticalGroup(
             btnSaleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -203,7 +202,7 @@ public class mainView extends javax.swing.JFrame {
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(51, 51, 51));
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/validating-ticket.png"))); // NOI18N
-        jLabel5.setText("Invoice");
+        jLabel5.setText("Hóa đơn");
         jLabel5.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel5MouseClicked(evt);
@@ -217,7 +216,7 @@ public class mainView extends javax.swing.JFrame {
             .addGroup(btnBillLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel5)
-                .addContainerGap(32, Short.MAX_VALUE))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
         btnBillLayout.setVerticalGroup(
             btnBillLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -241,7 +240,7 @@ public class mainView extends javax.swing.JFrame {
         jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(51, 51, 51));
         jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/user24px.png"))); // NOI18N
-        jLabel10.setText("Properties");
+        jLabel10.setText("Thuộc tính");
         jLabel10.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel10MouseClicked(evt);
@@ -254,7 +253,7 @@ public class mainView extends javax.swing.JFrame {
             btnPropertiesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(btnPropertiesLayout.createSequentialGroup()
                 .addComponent(jLabel10)
-                .addGap(0, 21, Short.MAX_VALUE))
+                .addGap(0, 15, Short.MAX_VALUE))
         );
         btnPropertiesLayout.setVerticalGroup(
             btnPropertiesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -277,7 +276,7 @@ public class mainView extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(51, 51, 51));
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/chart.png"))); // NOI18N
-        jLabel2.setText("statistics");
+        jLabel2.setText("Thống kê");
         jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel2MouseClicked(evt);
@@ -288,42 +287,43 @@ public class mainView extends javax.swing.JFrame {
         btnStatistics.setLayout(btnStatisticsLayout);
         btnStatisticsLayout.setHorizontalGroup(
             btnStatisticsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(btnStatisticsLayout.createSequentialGroup()
-                .addComponent(jLabel2)
-                .addGap(0, 26, Short.MAX_VALUE))
+            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 133, Short.MAX_VALUE)
         );
         btnStatisticsLayout.setVerticalGroup(
             btnStatisticsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnStatisticsLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 66, Short.MAX_VALUE)
         );
 
         jPanel2.add(btnStatistics);
-        btnStatistics.setBounds(0, 374, 140, 70);
+        btnStatistics.setBounds(0, 374, 137, 70);
 
         btnCustomer.setBackground(new java.awt.Color(255, 204, 255));
         btnCustomer.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        btnCustomer.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnCustomerMouseClicked(evt);
+            }
+        });
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(51, 51, 51));
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/user24px.png"))); // NOI18N
-        jLabel6.setText("Customer");
+        jLabel6.setText("Khách hàng");
 
         javax.swing.GroupLayout btnCustomerLayout = new javax.swing.GroupLayout(btnCustomer);
         btnCustomer.setLayout(btnCustomerLayout);
         btnCustomerLayout.setHorizontalGroup(
             btnCustomerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(btnCustomerLayout.createSequentialGroup()
-                .addComponent(jLabel6)
-                .addGap(0, 27, Short.MAX_VALUE))
+                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 17, Short.MAX_VALUE))
         );
         btnCustomerLayout.setVerticalGroup(
             btnCustomerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(btnCustomerLayout.createSequentialGroup()
-                .addContainerGap()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnCustomerLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         jPanel2.add(btnCustomer);
@@ -353,7 +353,7 @@ public class mainView extends javax.swing.JFrame {
         );
 
         jPanel2.add(btnExit);
-        btnExit.setBounds(0, 510, 140, 60);
+        btnExit.setBounds(0, 570, 140, 60);
 
         btnBill1.setBackground(new java.awt.Color(255, 204, 255));
         btnBill1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -366,7 +366,7 @@ public class mainView extends javax.swing.JFrame {
         jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(51, 51, 51));
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/coupon.png"))); // NOI18N
-        jLabel8.setText("Promotion");
+        jLabel8.setText("Giảm giá");
         jLabel8.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jLabel8MouseClicked(evt);
@@ -379,7 +379,7 @@ public class mainView extends javax.swing.JFrame {
             btnBill1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(btnBill1Layout.createSequentialGroup()
                 .addComponent(jLabel8)
-                .addGap(0, 10, Short.MAX_VALUE))
+                .addGap(0, 24, Short.MAX_VALUE))
         );
         btnBill1Layout.setVerticalGroup(
             btnBill1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -391,50 +391,89 @@ public class mainView extends javax.swing.JFrame {
         jPanel2.add(btnBill1);
         btnBill1.setBounds(0, 180, 140, 60);
 
+        btnNhanVien.setBackground(new java.awt.Color(255, 204, 255));
+        btnNhanVien.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        btnNhanVien.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnNhanVienMouseClicked(evt);
+            }
+        });
+
+        jLabel11.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/logout.png"))); // NOI18N
+        jLabel11.setText("Nhân Viên");
+
+        javax.swing.GroupLayout btnNhanVienLayout = new javax.swing.GroupLayout(btnNhanVien);
+        btnNhanVien.setLayout(btnNhanVienLayout);
+        btnNhanVienLayout.setHorizontalGroup(
+            btnNhanVienLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(btnNhanVienLayout.createSequentialGroup()
+                .addComponent(jLabel11)
+                .addGap(0, 17, Short.MAX_VALUE))
+        );
+        btnNhanVienLayout.setVerticalGroup(
+            btnNhanVienLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnNhanVienLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+
+        jPanel2.add(btnNhanVien);
+        btnNhanVien.setBounds(0, 510, 139, 60);
+
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1070, 640));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnProductMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnProductMouseClicked
-        setpanel(new productView());
+        setpanel(new SanPham());
     }//GEN-LAST:event_btnProductMouseClicked
 
     private void btnSaleMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSaleMouseClicked
-        setpanel(new sellProductView());
+        setpanel(new BanHang());
     }//GEN-LAST:event_btnSaleMouseClicked
 
     private void btnBillMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBillMouseClicked
-        setpanel(new detailInvoiceView());
+        setpanel(new HoaDonChiTiet());
     }//GEN-LAST:event_btnBillMouseClicked
 
     private void btnPropertiesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPropertiesMouseClicked
-        setpanel(new addProperties());
+        setpanel(new ThuocTinh());
     }//GEN-LAST:event_btnPropertiesMouseClicked
 
     private void btnBill1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBill1MouseClicked
-        setpanel(new promotionalView());
+        setpanel(new KhuyenMai());
     }//GEN-LAST:event_btnBill1MouseClicked
 
     private void jLabel8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel8MouseClicked
-        setpanel(new promotionalView());
+        setpanel(new KhuyenMai());
     }//GEN-LAST:event_jLabel8MouseClicked
 
     private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked
-        setpanel(new detailInvoiceView());
+        setpanel(new HoaDonChiTiet());
     }//GEN-LAST:event_jLabel5MouseClicked
 
     private void jLabel10MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel10MouseClicked
-        setpanel(new addProperties());
+        setpanel(new ThuocTinh());
     }//GEN-LAST:event_jLabel10MouseClicked
 
     private void btnStatisticsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnStatisticsMouseClicked
-        setpanel(new statisticView());
+        setpanel(new ThongKe());
     }//GEN-LAST:event_btnStatisticsMouseClicked
 
     private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
-        setpanel(new statisticView());
+        setpanel(new ThongKe());
     }//GEN-LAST:event_jLabel2MouseClicked
+
+    private void btnNhanVienMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnNhanVienMouseClicked
+         setpanel(new NhanVien());
+    }//GEN-LAST:event_btnNhanVienMouseClicked
+
+    private void btnCustomerMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCustomerMouseClicked
+        setpanel(new KhachHang());
+    }//GEN-LAST:event_btnCustomerMouseClicked
 
     /**
      * @param args the command line arguments
@@ -476,12 +515,14 @@ public class mainView extends javax.swing.JFrame {
     private javax.swing.JPanel btnBill1;
     private javax.swing.JPanel btnCustomer;
     private javax.swing.JPanel btnExit;
+    private javax.swing.JPanel btnNhanVien;
     private javax.swing.JPanel btnProduct;
     private javax.swing.JPanel btnProperties;
     private javax.swing.JPanel btnSale;
     private javax.swing.JPanel btnStatistics;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

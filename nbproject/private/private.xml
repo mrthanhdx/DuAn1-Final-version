@@ -3,10 +3,17 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/trant/OneDrive/Documents/NetBeansProjects/FpolyStore-PersonalProject/src/view/statisticView.java</file>
-            <file>file:/C:/Users/trant/OneDrive/Documents/NetBeansProjects/FpolyStore-PersonalProject/src/view/productView.java</file>
-            <file>file:/C:/Users/trant/OneDrive/Documents/NetBeansProjects/FpolyStore-PersonalProject/src/view/mainView.java</file>
-            <file>file:/C:/Users/trant/OneDrive/Documents/NetBeansProjects/FpolyStore-PersonalProject/src/view/promotionalView.java</file>
+            <file>file:/D:/Code/duan1/FpolyStore-PersonalProject%20(1)/src/view/ThongKe.java</file>
+            <file>file:/D:/Code/duan1/FpolyStore-PersonalProject%20(1)/src/view/BanHang.java</file>
+            <file>file:/D:/Code/duan1/FpolyStore-PersonalProject%20(1)/src/view/NhanVien.java</file>
+            <file>file:/D:/Code/duan1/FpolyStore-PersonalProject%20(1)/src/view/ThuocTinh.java</file>
+            <file>file:/D:/Code/duan1/FpolyStore-PersonalProject%20(1)/src/connection/ConenctionProvider.java</file>
+            <file>file:/D:/Code/duan1/FpolyStore-PersonalProject%20(1)/src/view/HoaDonChiTiet.java</file>
+            <file>file:/D:/Code/duan1/FpolyStore-PersonalProject%20(1)/src/view/mainView.java</file>
+            <file>file:/D:/Code/duan1/FpolyStore-PersonalProject%20(1)/src/view/DanhNhap.java</file>
+            <file>file:/D:/Code/duan1/FpolyStore-PersonalProject%20(1)/src/view/KhuyenMai.java</file>
+            <file>file:/D:/Code/duan1/FpolyStore-PersonalProject%20(1)/src/view/SanPham.java</file>
+            <file>file:/D:/Code/duan1/FpolyStore-PersonalProject%20(1)/src/view/KhachHang.java</file>
         </group>
     </open-files>
 </project-private>

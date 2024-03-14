@@ -6,7 +6,7 @@ public class ConenctionProvider {
 
     private static Connection conn;
     private static String DB_SERVERNAME = "localhost";
-    private static String DB_DATABASENAME = "FPolyStore";
+    private static String DB_DATABASENAME = "Duan1";
     private static String DB_USERNAME = "sa";
     private static String DB_PASSWORD = "12345678";
    
