@@ -179,7 +179,9 @@ public class mainView extends javax.swing.JFrame {
         btnSale.setLayout(btnSaleLayout);
         btnSaleLayout.setHorizontalGroup(
             btnSaleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 136, Short.MAX_VALUE)
+            .addGroup(btnSaleLayout.createSequentialGroup()
+                .addComponent(jLabel4)
+                .addGap(0, 16, Short.MAX_VALUE))
         );
         btnSaleLayout.setVerticalGroup(
             btnSaleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -420,7 +422,7 @@ public class mainView extends javax.swing.JFrame {
         );
 
         jPanel2.add(btnNhanVien);
-        btnNhanVien.setBounds(0, 510, 139, 60);
+        btnNhanVien.setBounds(0, 510, 138, 60);
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1070, 640));
 

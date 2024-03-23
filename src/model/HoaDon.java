@@ -8,9 +8,9 @@ import java.sql.Date;
  * @author PC
  */
 public class HoaDon {
-    private User user;
+    private int idNV;
     private Integer id;
-    private KhachHang khachHang;
+    private int IDkhachHang;
     private String Ma;
     private String Ghichu;
     private Date NgayTao;
@@ -22,10 +22,10 @@ public class HoaDon {
     public HoaDon() {
     }
 
-    public HoaDon(User user, Integer id, KhachHang khachHang, String Ma, String Ghichu, Date NgayTao, Date NgayThanhToan, int TinhTrang,Double tongTien) {
-        this.user = user;
+    public HoaDon(int idUser, Integer id, int khachHang, String Ma, String Ghichu, Date NgayTao, Date NgayThanhToan, int TinhTrang,Double tongTien) {
+        this.idNV = idUser;
         this.id = id;
-        this.khachHang = khachHang;
+        this.IDkhachHang = khachHang;
         this.Ma = Ma;
         this.Ghichu = Ghichu;
         this.NgayTao = NgayTao;
@@ -58,20 +58,20 @@ public class HoaDon {
         this.id = id;
     }
 
-    public User getUser() {
-        return user;
+    public int getIdUser() {
+        return idNV;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setIdUser(int user) {
+        this.idNV = user;
     }
 
-    public KhachHang getKhachHang() {
-        return khachHang;
+    public int getIDKhachHang() {
+        return IDkhachHang;
     }
 
-    public void setKhachHang(KhachHang khachHang) {
-        this.khachHang = khachHang;
+    public void setIDKhachHang(int khachHang) {
+        this.IDkhachHang = khachHang;
     }
 
     public String getMa() {

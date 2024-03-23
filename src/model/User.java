@@ -11,38 +11,45 @@ import java.sql.Date;
  * @author Admin
  */
 public class User {
+
     private int id;
     private String Ten;
-    private String TenDem;
-    private String Ho;
     private Date NgaySinh;
     private Boolean GioTinh;
     private String Sdt;
+    private int IdCV;
     private String TaiKhoan;
     private String MatKhau;
     private String Email;
-    private int TrangThai;
-    private Chucvu chucVu;
+    private boolean TrangThai;
+    private Date NgayTao;
+    private Date NgaySua;
 
     public User() {
     }
 
-    public User(int id ,String Ten, String TenDem, String Ho, Date NgaySinh, Boolean GioTinh, String Sdt, String TaiKhoan, String MatKhau, String Email, int TrangThai, Chucvu chucVu) {
+    public User(int id, String Ten, Date NgaySinh, Boolean GioTinh, String Sdt, int IdCV, String TaiKhoan, String MatKhau, String Email, boolean TrangThai, Date NgayTao, Date NgaySua) {
+        this.id = id;
         this.Ten = Ten;
-        this.TenDem = TenDem;
-        this.Ho = Ho;
         this.NgaySinh = NgaySinh;
         this.GioTinh = GioTinh;
         this.Sdt = Sdt;
+        this.IdCV = IdCV;
         this.TaiKhoan = TaiKhoan;
         this.MatKhau = MatKhau;
         this.Email = Email;
         this.TrangThai = TrangThai;
-        this.id = id;
-        this.chucVu = chucVu;
+        this.NgayTao = NgayTao;
+        this.NgaySua = NgaySua;
     }
 
+    public int getId() {
+        return id;
+    }
 
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getTen() {
         return Ten;
@@ -50,22 +57,6 @@ public class User {
 
     public void setTen(String Ten) {
         this.Ten = Ten;
-    }
-
-    public String getTenDem() {
-        return TenDem;
-    }
-
-    public void setTenDem(String TenDem) {
-        this.TenDem = TenDem;
-    }
-
-    public String getHo() {
-        return Ho;
-    }
-
-    public void setHo(String Ho) {
-        this.Ho = Ho;
     }
 
     public Date getNgaySinh() {
@@ -92,6 +83,14 @@ public class User {
         this.Sdt = Sdt;
     }
 
+    public int getIdCV() {
+        return IdCV;
+    }
+
+    public void setIdCV(int IdCV) {
+        this.IdCV = IdCV;
+    }
+
     public String getTaiKhoan() {
         return TaiKhoan;
     }
@@ -116,29 +115,29 @@ public class User {
         this.Email = Email;
     }
 
-    public int getTrangThai() {
+    public boolean isTrangThai() {
         return TrangThai;
     }
 
-    public void setTrangThai(int TrangThai) {
+    public void setTrangThai(boolean TrangThai) {
         this.TrangThai = TrangThai;
     }
 
-    public Chucvu getChucVu() {
-        return chucVu;
+    public Date getNgayTao() {
+        return NgayTao;
     }
 
-    public void setChucVu(Chucvu chucVu) {
-        this.chucVu = chucVu;
+    public void setNgayTao(Date NgayTao) {
+        this.NgayTao = NgayTao;
     }
 
-    public int getId() {
-        return id;
+    public Date getNgaySua() {
+        return NgaySua;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setNgaySua(Date NgaySua) {
+        this.NgaySua = NgaySua;
     }
-    
+
     
 }

@@ -16,7 +16,7 @@ public class KhachHang {
     private String ten;
     private String tendem;
     private String ho;
-    private int gioitinh;
+    private boolean gioitinh;
     private Date ngaysinh;
     private String email;
     private String sdt;
@@ -30,7 +30,7 @@ public class KhachHang {
         this.ten = ten;
         this.tendem = tendem;
         this.ho = ho;
-        this.gioitinh = gioitinh;
+        this.gioitinh = this.gioitinh;
         this.ngaysinh = ngaysinh;
         this.email = email;
         this.sdt = sdt;
@@ -69,13 +69,15 @@ public class KhachHang {
         this.ho = ho;
     }
 
-    public int getGioitinh() {
+    public boolean isGioitinh() {
         return gioitinh;
     }
 
-    public void setGioitinh(int gioitinh) {
+    public void setGioitinh(boolean gioitinh) {
         this.gioitinh = gioitinh;
     }
+
+
 
     public Date getNgaysinh() {
         return ngaysinh;

@@ -6,127 +6,60 @@ package model;
 
 /**
  *
- * @author Admin
+ * @author HSS
  */
 public class SanPham {
-   private int id;
-    private String Ma;
-    private String Ten;
-    private int SoLuongTon;
-    private Double GiaNhap;
-    private Double GiaBan;
-    private MauSac mauSac;
-    private ChatLieu chatLieu;
-    private KichCo kichCo;
-    private KhuyenMai khuenMai;
-    private String QrCode;
+    private String id;
+    private String ten;
+    private String ngayTao;
+    private String ngaySua;
+
 
     public SanPham() {
     }
 
-    public SanPham( int id,String Ma, String Ten, int SoLuongTon, Double GiaNhap, Double GiaBan, MauSac mauSac, ChatLieu chatLieu, KichCo kichCo, KhuyenMai khuenMai, String QrCode) {
-        this.Ma = Ma;
-        this.Ten = Ten;
-        this.SoLuongTon = SoLuongTon;
-        this.GiaNhap = GiaNhap;
-        this.GiaBan = GiaBan;
-        this.mauSac = mauSac;
-        this.chatLieu = chatLieu;
-        this.kichCo = kichCo;
-        this.khuenMai = khuenMai;
-         this.QrCode = QrCode;
+    public SanPham(String id, String ten, String ngayTao, String ngaySua) {
+        this.id = id;
+        this.ten = ten;
+        this.ngayTao = ngayTao;
+        this.ngaySua = ngaySua;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
-    public String getQrCode() {
-        return QrCode;
-    }
-
-    public void setQrCode(String QrCode) {
-        this.QrCode = QrCode;
-    }
-
-  
-
-  
-
-    public String getMa() {
-        return Ma;
-    }
-
-    public void setMa(String Ma) {
-        this.Ma = Ma;
-    }
-
+    
+   
     public String getTen() {
-        return Ten;
+        return ten;
     }
 
-    public void setTen(String Ten) {
-        this.Ten = Ten;
+    public void setTen(String ten) {
+        this.ten = ten;
     }
 
-    public int getSoLuongTon() {
-        return SoLuongTon;
+    public String getNgayTao() {
+        return ngayTao;
     }
 
-    public void setSoLuongTon(int SoLuongTon) {
-        this.SoLuongTon = SoLuongTon;
+    public void setNgayTao(String ngayTao) {
+        this.ngayTao = ngayTao;
     }
 
-    public Double getGiaNhap() {
-        return GiaNhap;
+    public String getNgaySua() {
+        return ngaySua;
     }
 
-    public void setGiaNhap(Double GiaNhap) {
-        this.GiaNhap = GiaNhap;
+    public void setNgaySua(String ngaySua) {
+        this.ngaySua = ngaySua;
     }
 
-    public Double getGiaBan() {
-        return GiaBan;
-    }
-
-    public void setGiaBan(Double GiaBan) {
-        this.GiaBan = GiaBan;
-    }
-
-    public MauSac getMauSac() {
-        return mauSac;
-    }
-
-    public void setMauSac(MauSac mauSac) {
-        this.mauSac = mauSac;
-    }
-
-    public ChatLieu getChatLieu() {
-        return chatLieu;
-    }
-
-    public void setChatLieu(ChatLieu chatLieu) {
-        this.chatLieu = chatLieu;
-    }
-
-    public KichCo getKichCo() {
-        return kichCo;
-    }
-
-    public void setKichCo(KichCo kichCo) {
-        this.kichCo = kichCo;
-    }
-
-    public KhuyenMai getKhuenMai() {
-        return khuenMai;
-    }
-
-    public void setKhuenMai(KhuyenMai khuenMai) {
-        this.khuenMai = khuenMai;
-    }
-
+    
+    
+    
 }
