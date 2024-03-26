@@ -174,6 +174,11 @@ public class mainView extends javax.swing.JFrame {
         jLabel4.setForeground(new java.awt.Color(51, 51, 51));
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/shopping32px.png"))); // NOI18N
         jLabel4.setText("Bán Hàng");
+        jLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel4MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout btnSaleLayout = new javax.swing.GroupLayout(btnSale);
         btnSale.setLayout(btnSaleLayout);
@@ -476,6 +481,10 @@ public class mainView extends javax.swing.JFrame {
     private void btnCustomerMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCustomerMouseClicked
         setpanel(new KhachHang());
     }//GEN-LAST:event_btnCustomerMouseClicked
+
+    private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
+        setpanel(new BanHang());
+    }//GEN-LAST:event_jLabel4MouseClicked
 
     /**
      * @param args the command line arguments

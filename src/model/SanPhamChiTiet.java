@@ -24,7 +24,6 @@ public class SanPhamChiTiet {
     private int soLuongTon;
     private double giaNhap;
     private double giaBan;
-    private String qrCode;
     private MauSac mauSac;
     private NSX nhaSx;
     private KichCo kichCo;
