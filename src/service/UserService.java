@@ -55,7 +55,7 @@ public class UserService {
                     }
                     return ls;
         } catch (Exception e) {
-            e.printStackTrace();
+//            e.printStackTrace();
         }
         return null;
     }
@@ -68,26 +68,28 @@ public class UserService {
                                 ,[NgaySinh]
                                 ,[Gioitinh]
                                 ,[Sdt]
+                                ,[IdCV]
                                 ,[TaiKhoan]
                                 ,[MatKhau]
                                 ,[Email]
                                 ,[TrangThai])
                           VALUES
-                                (?,?,?,?,?,?,?,?)
+                                (?,?,?,?,?,?,?,?,?)
                      """;
-        try (PreparedStatement ps = con.prepareStatement(sql)){
+        try (PreparedStatement ps = con.prepareStatement(sql)) {
             ps.setObject(1, u.getTen());
             ps.setObject(2, u.getNgaySinh());
             ps.setObject(3, u.getGioTinh());
             ps.setObject(4, u.getSdt());
-            ps.setObject(5, u.getTaiKhoan());
-            ps.setObject(6, u.getMatKhau());
-            ps.setObject(7, u.getEmail());
-            ps.setObject(8, u.isTrangThai());
+            ps.setObject(5, u.getIdCV());
+            ps.setObject(6, u.getTaiKhoan());
+            ps.setObject(7, u.getMatKhau());
+            ps.setObject(8, u.getEmail());
+            ps.setObject(9, u.isTrangThai());
             int result = ps.executeUpdate();
             return result > 0;
         } catch (Exception e) {
-            e.printStackTrace();
+//            e.printStackTrace();
         }
         return false;
     }
@@ -101,39 +103,63 @@ public class UserService {
             int result = ps.executeUpdate();
             return result > 0;
         } catch (Exception e) {
-            e.printStackTrace();
+//            e.printStackTrace();
         }
         return false;
     }
     public boolean sua(User u ,int id){
         String sql = """
-                     UPDATE [dbo].[Users]
+                    UPDATE [dbo].[Users]
                         SET [Ten] = ?
                            ,[NgaySinh] = ?
                            ,[Gioitinh] = ?
                            ,[Sdt] = ?
+                           ,[IdCV] = ?
                            ,[TaiKhoan] = ?
                            ,[MatKhau] = ?
                            ,[Email] = ?
                            ,[TrangThai] = ?
-                      WHERE Id = ?
+                      WHERE Id = ? 
                      """;
-        try (PreparedStatement ps = con.prepareStatement(sql)){
+        try (PreparedStatement ps = con.prepareStatement(sql)) {
             ps.setObject(1, u.getTen());
             ps.setObject(2, u.getNgaySinh());
             ps.setObject(3, u.getGioTinh());
             ps.setObject(4, u.getSdt());
-            ps.setObject(5, u.getTaiKhoan());
-            ps.setObject(6, u.getMatKhau());
-            ps.setObject(7, u.getEmail());
-            ps.setObject(8, u.isTrangThai());
-            ps.setObject(9, id);
+            ps.setObject(5, u.getIdCV());
+            ps.setObject(6, u.getTaiKhoan());
+            ps.setObject(7, u.getMatKhau());
+            ps.setObject(8, u.getEmail());
+            ps.setObject(9, u.isTrangThai());
+            ps.setObject(10, id);
             int result = ps.executeUpdate();
             return result > 0;
         } catch (Exception e) {
-            e.printStackTrace();
+//            e.printStackTrace();
         }
         return false;
     }
     
+    public boolean getAllAccount(String userAccount) {
+        ArrayList<User> ls = new ArrayList<>();
+        String sql = """
+                     SELECT [TaiKhoan]
+                       FROM [dbo].[Users]
+                     """;
+        try (PreparedStatement ps = con.prepareStatement(sql)) {
+            ResultSet rs = ps.executeQuery();
+            User u = new User();
+            while (rs.next()) {
+                u.setTaiKhoan(rs.getString(1));
+                ls.add(u);
+            }
+            if (u.getTaiKhoan().equals(userAccount)) {
+                return false;
+            }
+
+        } catch (Exception e) {
+//            e.printStackTrace();
+        }
+        return true;
+    }
 }

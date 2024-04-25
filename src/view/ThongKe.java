@@ -4,21 +4,98 @@
  */
 package view;
 
+import interfacee.ThongKeService;
+import java.awt.Color;
+import java.sql.Connection;
+import java.text.DecimalFormat;
+import java.text.SimpleDateFormat;
 import java.util.Date;
+import javax.swing.table.DefaultTableModel;
+import model.HoaDon;
+import org.jfree.chart.ChartFactory;
+import org.jfree.chart.ChartFrame;
+import org.jfree.chart.JFreeChart;
+import org.jfree.chart.plot.CategoryPlot;
+import org.jfree.chart.plot.PlotOrientation;
+import org.jfree.data.category.DefaultCategoryDataset;
+import service.ThongKeService_IMPL;
 
 /**
  *
  * @author trant
  */
 public class ThongKe extends javax.swing.JPanel {
+    Connection con = connection.ConenctionProvider.getConnection();
+    DefaultTableModel mol = new DefaultTableModel();
+    ThongKeService tksv = new ThongKeService_IMPL();
+    DecimalFormat df = new DecimalFormat("#,###");
+    SimpleDateFormat date1 = new SimpleDateFormat("dd-MM-yyyy");
 
     /**
      * Creates new form statisticView
      */
     public ThongKe() {
         initComponents();
-        Date date = jCalendar1.getDate();
-        System.out.println(date);
+//        Date date = jCalendar1.getDate();
+//        System.out.println(date);
+        loaddt();
+        loadhd();
+        mol = (DefaultTableModel) tbl_Bang.getModel();
+        txt_Thang.setVisible(false);
+        txt_Nam.setVisible(false);
+        loadData();
+    }
+    void loaddt() {
+        lbl_dt.setText(df.format(tksv.getdt()));
+    }
+
+    void loadhd() {
+        lbl_hd.setText(String.valueOf(tksv.getHoadon()));
+    }
+
+    void loadData() {
+        mol = (DefaultTableModel) tbl_Bang.getModel();
+        mol.setRowCount(0);
+        for (HoaDon hd : tksv.getAll()) {
+            Object dataRow[] = new Object[4];
+            dataRow[0] = hd.getId();
+            dataRow[1] = date1.format(hd.getNgayTao());
+            dataRow[2] = date1.format(hd.getNgayThanhToan());
+            dataRow[3] = hd.getTongTien();
+            mol.addRow(dataRow);
+        }
+    }
+
+    void searchNam(String str) {
+        mol.setRowCount(0);
+        for (HoaDon hd : tksv.gethdyear(str)) {
+            Object dataRow[] = new Object[4];
+            dataRow[0] = hd.getId();
+            dataRow[1] = date1.format(hd.getNgayTao());
+            dataRow[2] = date1.format(hd.getNgayThanhToan());
+            dataRow[3] = hd.getTongTien();
+            mol.addRow(dataRow);
+        }
+    }
+
+    void searchThang(String str) {
+        mol.setRowCount(0);
+        for (HoaDon hd : tksv.gethdmonth(str)) {
+            Object dataRow[] = new Object[4];
+            dataRow[0] = hd.getId();
+            dataRow[1] = date1.format(hd.getNgayTao());
+            dataRow[2] = date1.format(hd.getNgayThanhToan());
+            dataRow[3] = hd.getTongTien();
+            mol.addRow(dataRow);
+        }
+    }
+    void Thang(String str){ 
+    lbl_dt.setText(df.format(tksv.getdtThang(str)));
+    lbl_hd.setText(String.valueOf(tksv.gethdThang(str)));
+    }
+    void Nam(String str){
+    lbl_dt.setText(df.format(tksv.getdtNam(str)));
+    lbl_hd.setText(String.valueOf(tksv.gethdNam(str)));
     }
 
     /**
@@ -30,23 +107,23 @@ public class ThongKe extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        lbl_dt = new javax.swing.JLabel();
+        lbl_hd = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tbl_Bang = new javax.swing.JTable();
         jLabel5 = new javax.swing.JLabel();
-        jCalendar1 = new com.toedter.calendar.JCalendar();
         jButton1 = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jLabel8 = new javax.swing.JLabel();
-        jComboBox2 = new javax.swing.JComboBox<>();
+        rdo_Thang = new javax.swing.JRadioButton();
+        rdo_Nam = new javax.swing.JRadioButton();
+        txt_Thang = new javax.swing.JTextField();
+        txt_Nam = new javax.swing.JTextField();
 
-        setBackground(new java.awt.Color(204, 204, 255));
+        setBackground(new java.awt.Color(204, 255, 255));
         setMaximumSize(new java.awt.Dimension(940, 580));
         setMinimumSize(new java.awt.Dimension(940, 580));
         setName(""); // NOI18N
@@ -55,24 +132,24 @@ public class ThongKe extends javax.swing.JPanel {
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel1.setText("Revenue");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 20, -1, 27));
+        jLabel1.setText("Doanh Thu");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 20, -1, 27));
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel2.setText("Order");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, 200, -1));
+        jLabel2.setText("Hóa Đơn");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 200, -1));
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel3.setText("...");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 70, 192, 49));
+        lbl_dt.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lbl_dt.setText("...");
+        jPanel1.add(lbl_dt, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 60, 80, 49));
 
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel4.setText("...");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(24, 77, 78, 39));
+        lbl_hd.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lbl_hd.setText("...");
+        jPanel1.add(lbl_hd, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 70, 60, 39));
 
-        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 0, -1, -1));
+        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 0, 460, 120));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tbl_Bang.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -80,58 +157,145 @@ public class ThongKe extends javax.swing.JPanel {
                 {null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "STT", "Ngày Tạo", "Ngày Thanh Toán", "Tiền"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tbl_Bang);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 350, 928, 206));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 356, 928, 200));
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel5.setText("Statistical table");
-        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 320, 190, 22));
-        add(jCalendar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 0, 410, 280));
+        jLabel5.setText("Bảng thống kê");
+        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 320, 190, 30));
 
         jButton1.setBackground(new java.awt.Color(125, 224, 237));
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/bill.png"))); // NOI18N
-        jButton1.setText("View");
+        jButton1.setText("Biểu Đồ");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
         add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 300, 120, 40));
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel6.setText("Revenue in");
+        jLabel6.setText("Doanh thu ở");
         add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 130, -1, -1));
 
-        jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel7.setText("Year:");
-        add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 230, -1, -1));
+        buttonGroup1.add(rdo_Thang);
+        rdo_Thang.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        rdo_Thang.setText("Tháng:");
+        rdo_Thang.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rdo_ThangActionPerformed(evt);
+            }
+        });
+        add(rdo_Thang, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, -1, -1));
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 230, 130, 30));
+        buttonGroup1.add(rdo_Nam);
+        rdo_Nam.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        rdo_Nam.setText("Năm:");
+        rdo_Nam.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rdo_NamActionPerformed(evt);
+            }
+        });
+        add(rdo_Nam, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 230, -1, -1));
 
-        jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel8.setText("Month:");
-        add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, -1, -1));
+        txt_Thang.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_ThangActionPerformed(evt);
+            }
+        });
+        txt_Thang.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txt_ThangKeyReleased(evt);
+            }
+        });
+        add(txt_Thang, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 170, 90, -1));
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 170, 130, 30));
+        txt_Nam.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txt_NamKeyReleased(evt);
+            }
+        });
+        add(txt_Nam, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 230, 90, -1));
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        final DefaultCategoryDataset dataset = new DefaultCategoryDataset();
+        dataset.addValue(tksv.getmonth1(), "VND", "1");
+        dataset.addValue(tksv.getmonth2(), "VND", "2");
+        dataset.addValue(tksv.getmonth3(), "VND", "3");
+        dataset.addValue(tksv.getmonth4(), "VND", "4");
+        dataset.addValue(tksv.getmonth5(), "VND", "5");
+        dataset.addValue(tksv.getmonth6(), "VND", "6");
+        dataset.addValue(tksv.getmonth7(), "VND", "7");
+        dataset.addValue(tksv.getmonth8(), "VND", "8");
+        dataset.addValue(tksv.getmonth9(), "VND", "9");
+        dataset.addValue(tksv.getmonth10(), "VND", "10");
+        dataset.addValue(tksv.getmonth11(), "VND", "11");
+        dataset.addValue(tksv.getmonth12(), "VND", "12");
+        JFreeChart barChart = ChartFactory.createBarChart(
+            "Biểu đồ doanh thu", "Tháng", "VND", dataset, PlotOrientation.VERTICAL,
+            false, true, false);
+        CategoryPlot categoryPlot = new CategoryPlot();
+        categoryPlot.setRangeGridlinePaint(Color.BLACK);
+        ChartFrame chartFrame = new ChartFrame("Biều đồ", barChart);
+        chartFrame.setVisible(true);
+        chartFrame.setSize(1000, 500);
+        chartFrame.setLocationRelativeTo(null);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void rdo_ThangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdo_ThangActionPerformed
+        // TODO add your handling code here:
+        txt_Thang.setVisible(true);
+        txt_Nam.setVisible(false);
+
+    }//GEN-LAST:event_rdo_ThangActionPerformed
+
+    private void rdo_NamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdo_NamActionPerformed
+        // TODO add your handling code here:
+        txt_Thang.setVisible(false);
+        txt_Nam.setVisible(true);
+
+    }//GEN-LAST:event_rdo_NamActionPerformed
+
+    private void txt_ThangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_ThangActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_ThangActionPerformed
+
+    private void txt_ThangKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_ThangKeyReleased
+        // TODO add your handling code here:
+        String searchThang = txt_Thang.getText();
+        searchThang(searchThang);
+        Thang(searchThang);
+    }//GEN-LAST:event_txt_ThangKeyReleased
+
+    private void txt_NamKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_NamKeyReleased
+        // TODO add your handling code here:
+        String searchNam = txt_Nam.getText();
+        searchNam(searchNam);
+        Nam(searchNam);
+    }//GEN-LAST:event_txt_NamKeyReleased
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JButton jButton1;
-    private com.toedter.calendar.JCalendar jCalendar1;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JLabel lbl_dt;
+    private javax.swing.JLabel lbl_hd;
+    private javax.swing.JRadioButton rdo_Nam;
+    private javax.swing.JRadioButton rdo_Thang;
+    private javax.swing.JTable tbl_Bang;
+    private javax.swing.JTextField txt_Nam;
+    private javax.swing.JTextField txt_Thang;
     // End of variables declaration//GEN-END:variables
 }

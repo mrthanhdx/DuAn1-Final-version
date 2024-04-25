@@ -4,7 +4,10 @@
  */
 package view;
 
+import java.awt.Color;
+import javax.swing.JButton;
 import javax.swing.JPanel;
+import javax.swing.plaf.basic.BasicButtonUI;
 /**
  *
  * @author trant
@@ -18,17 +21,34 @@ public class mainView extends javax.swing.JFrame {
      */
     public mainView() {
 
-        initComponents();
+      initComponents();
         setLocationRelativeTo(null);
         setpanel(new SanPham());
-
+        color();
+        JButton[] btn1= {btnBanHang,btnExit,btnHoaDon,btnKhachHang,btnNhanVien,btnThongKe,btnVoucher};
+        JButton[] btn2= {btnSanPham};
+        for (JButton btn22 : btn2) {
+            btn22.setBackground(new Color(103,204,255));
+        }
+        for (JButton btn11 : btn1) {
+            btn11.setBackground(new Color(204,255,255));
+        }
     }
 
+    
     private void setpanel(JPanel panel) {
         childPanel = panel;
         pnmain.removeAll();
         pnmain.add(childPanel);
         pnmain.validate();
+    }
+    
+    
+    private void color(){
+        JButton[] btns = {btnBanHang,btnExit,btnHoaDon,btnKhachHang,btnNhanVien,btnSanPham,btnThongKe,btnVoucher};
+        for (JButton btn : btns) {
+            btn.setBackground(new Color(204,255,255));
+        }
     }
 
     /**
@@ -46,36 +66,26 @@ public class mainView extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
-        btnProduct = new javax.swing.JPanel();
-        jLabel3 = new javax.swing.JLabel();
-        btnSale = new javax.swing.JPanel();
-        jLabel4 = new javax.swing.JLabel();
-        btnBill = new javax.swing.JPanel();
-        jLabel5 = new javax.swing.JLabel();
-        btnProperties = new javax.swing.JPanel();
-        jLabel10 = new javax.swing.JLabel();
-        btnStatistics = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
-        btnCustomer = new javax.swing.JPanel();
-        jLabel6 = new javax.swing.JLabel();
-        btnExit = new javax.swing.JPanel();
-        jLabel9 = new javax.swing.JLabel();
-        btnBill1 = new javax.swing.JPanel();
-        jLabel8 = new javax.swing.JLabel();
-        btnNhanVien = new javax.swing.JPanel();
-        jLabel11 = new javax.swing.JLabel();
+        btnExit = new javax.swing.JButton();
+        btnSanPham = new javax.swing.JButton();
+        btnBanHang = new javax.swing.JButton();
+        btnVoucher = new javax.swing.JButton();
+        btnHoaDon = new javax.swing.JButton();
+        btnThongKe = new javax.swing.JButton();
+        btnKhachHang = new javax.swing.JButton();
+        btnNhanVien = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel2.setBackground(new java.awt.Color(255, 204, 255));
+        jPanel2.setBackground(new java.awt.Color(204, 255, 255));
         jPanel2.setLayout(null);
 
         pnmain.setBackground(new java.awt.Color(255, 255, 255));
         pnmain.setMaximumSize(new java.awt.Dimension(940, 580));
         pnmain.setLayout(new java.awt.BorderLayout());
         jPanel2.add(pnmain);
-        pnmain.setBounds(140, 60, 940, 580);
+        pnmain.setBounds(150, 50, 940, 580);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/header1.png"))); // NOI18N
         jLabel1.setText(" ");
@@ -130,361 +140,214 @@ public class mainView extends javax.swing.JFrame {
         jPanel2.add(jPanel5);
         jPanel5.setBounds(0, 0, 250, 60);
 
-        btnProduct.setBackground(new java.awt.Color(255, 51, 255));
-        btnProduct.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        btnProduct.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnExit.setText("Exit");
+        btnExit.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnProductMouseClicked(evt);
+                btnExitMouseClicked(evt);
             }
         });
-
-        jLabel3.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/product.png"))); // NOI18N
-        jLabel3.setText("Sản Phẩm");
-
-        javax.swing.GroupLayout btnProductLayout = new javax.swing.GroupLayout(btnProduct);
-        btnProduct.setLayout(btnProductLayout);
-        btnProductLayout.setHorizontalGroup(
-            btnProductLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(btnProductLayout.createSequentialGroup()
-                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 18, Short.MAX_VALUE))
-        );
-        btnProductLayout.setVerticalGroup(
-            btnProductLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnProductLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-
-        jPanel2.add(btnProduct);
-        btnProduct.setBounds(0, 60, 140, 60);
-
-        btnSale.setBackground(new java.awt.Color(255, 204, 255));
-        btnSale.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        btnSale.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnSaleMouseClicked(evt);
+        btnExit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExitActionPerformed(evt);
             }
         });
-
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/shopping32px.png"))); // NOI18N
-        jLabel4.setText("Bán Hàng");
-        jLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel4MouseClicked(evt);
-            }
-        });
-
-        javax.swing.GroupLayout btnSaleLayout = new javax.swing.GroupLayout(btnSale);
-        btnSale.setLayout(btnSaleLayout);
-        btnSaleLayout.setHorizontalGroup(
-            btnSaleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(btnSaleLayout.createSequentialGroup()
-                .addComponent(jLabel4)
-                .addGap(0, 16, Short.MAX_VALUE))
-        );
-        btnSaleLayout.setVerticalGroup(
-            btnSaleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnSaleLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-
-        jPanel2.add(btnSale);
-        btnSale.setBounds(0, 120, 140, 60);
-
-        btnBill.setBackground(new java.awt.Color(255, 204, 255));
-        btnBill.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        btnBill.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnBillMouseClicked(evt);
-            }
-        });
-
-        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/validating-ticket.png"))); // NOI18N
-        jLabel5.setText("Hóa đơn");
-        jLabel5.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel5MouseClicked(evt);
-            }
-        });
-
-        javax.swing.GroupLayout btnBillLayout = new javax.swing.GroupLayout(btnBill);
-        btnBill.setLayout(btnBillLayout);
-        btnBillLayout.setHorizontalGroup(
-            btnBillLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(btnBillLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel5)
-                .addContainerGap(20, Short.MAX_VALUE))
-        );
-        btnBillLayout.setVerticalGroup(
-            btnBillLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(btnBillLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        jPanel2.add(btnBill);
-        btnBill.setBounds(0, 240, 140, 70);
-
-        btnProperties.setBackground(new java.awt.Color(255, 204, 255));
-        btnProperties.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        btnProperties.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnPropertiesMouseClicked(evt);
-            }
-        });
-
-        jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/user24px.png"))); // NOI18N
-        jLabel10.setText("Thuộc tính");
-        jLabel10.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel10MouseClicked(evt);
-            }
-        });
-
-        javax.swing.GroupLayout btnPropertiesLayout = new javax.swing.GroupLayout(btnProperties);
-        btnProperties.setLayout(btnPropertiesLayout);
-        btnPropertiesLayout.setHorizontalGroup(
-            btnPropertiesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(btnPropertiesLayout.createSequentialGroup()
-                .addComponent(jLabel10)
-                .addGap(0, 15, Short.MAX_VALUE))
-        );
-        btnPropertiesLayout.setVerticalGroup(
-            btnPropertiesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnPropertiesLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-
-        jPanel2.add(btnProperties);
-        btnProperties.setBounds(0, 304, 140, 70);
-
-        btnStatistics.setBackground(new java.awt.Color(255, 204, 255));
-        btnStatistics.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        btnStatistics.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnStatisticsMouseClicked(evt);
-            }
-        });
-
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/chart.png"))); // NOI18N
-        jLabel2.setText("Thống kê");
-        jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel2MouseClicked(evt);
-            }
-        });
-
-        javax.swing.GroupLayout btnStatisticsLayout = new javax.swing.GroupLayout(btnStatistics);
-        btnStatistics.setLayout(btnStatisticsLayout);
-        btnStatisticsLayout.setHorizontalGroup(
-            btnStatisticsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 133, Short.MAX_VALUE)
-        );
-        btnStatisticsLayout.setVerticalGroup(
-            btnStatisticsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 66, Short.MAX_VALUE)
-        );
-
-        jPanel2.add(btnStatistics);
-        btnStatistics.setBounds(0, 374, 137, 70);
-
-        btnCustomer.setBackground(new java.awt.Color(255, 204, 255));
-        btnCustomer.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        btnCustomer.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnCustomerMouseClicked(evt);
-            }
-        });
-
-        jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/user24px.png"))); // NOI18N
-        jLabel6.setText("Khách hàng");
-
-        javax.swing.GroupLayout btnCustomerLayout = new javax.swing.GroupLayout(btnCustomer);
-        btnCustomer.setLayout(btnCustomerLayout);
-        btnCustomerLayout.setHorizontalGroup(
-            btnCustomerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(btnCustomerLayout.createSequentialGroup()
-                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 17, Short.MAX_VALUE))
-        );
-        btnCustomerLayout.setVerticalGroup(
-            btnCustomerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnCustomerLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-
-        jPanel2.add(btnCustomer);
-        btnCustomer.setBounds(0, 440, 140, 70);
-
-        btnExit.setBackground(new java.awt.Color(255, 204, 255));
-        btnExit.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-
-        jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/logout.png"))); // NOI18N
-        jLabel9.setText("Exit");
-
-        javax.swing.GroupLayout btnExitLayout = new javax.swing.GroupLayout(btnExit);
-        btnExit.setLayout(btnExitLayout);
-        btnExitLayout.setHorizontalGroup(
-            btnExitLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(btnExitLayout.createSequentialGroup()
-                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 64, Short.MAX_VALUE))
-        );
-        btnExitLayout.setVerticalGroup(
-            btnExitLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnExitLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-
         jPanel2.add(btnExit);
-        btnExit.setBounds(0, 570, 140, 60);
+        btnExit.setBounds(0, 480, 140, 60);
 
-        btnBill1.setBackground(new java.awt.Color(255, 204, 255));
-        btnBill1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        btnBill1.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnSanPham.setText("Sản Phẩm");
+        btnSanPham.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnBill1MouseClicked(evt);
+                btnSanPhamMouseClicked(evt);
             }
         });
+        jPanel2.add(btnSanPham);
+        btnSanPham.setBounds(0, 60, 140, 60);
 
-        jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/coupon.png"))); // NOI18N
-        jLabel8.setText("Giảm giá");
-        jLabel8.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnBanHang.setText("Bán Hàng");
+        btnBanHang.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel8MouseClicked(evt);
+                btnBanHangMouseClicked(evt);
             }
         });
+        jPanel2.add(btnBanHang);
+        btnBanHang.setBounds(0, 120, 140, 60);
 
-        javax.swing.GroupLayout btnBill1Layout = new javax.swing.GroupLayout(btnBill1);
-        btnBill1.setLayout(btnBill1Layout);
-        btnBill1Layout.setHorizontalGroup(
-            btnBill1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(btnBill1Layout.createSequentialGroup()
-                .addComponent(jLabel8)
-                .addGap(0, 24, Short.MAX_VALUE))
-        );
-        btnBill1Layout.setVerticalGroup(
-            btnBill1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnBill1Layout.createSequentialGroup()
-                .addGap(0, 6, Short.MAX_VALUE)
-                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
+        btnVoucher.setText("Khuyến Mãi");
+        btnVoucher.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnVoucherMouseClicked(evt);
+            }
+        });
+        btnVoucher.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVoucherActionPerformed(evt);
+            }
+        });
+        jPanel2.add(btnVoucher);
+        btnVoucher.setBounds(0, 180, 140, 60);
 
-        jPanel2.add(btnBill1);
-        btnBill1.setBounds(0, 180, 140, 60);
+        btnHoaDon.setText("Hóa Đơn");
+        btnHoaDon.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnHoaDonMouseClicked(evt);
+            }
+        });
+        jPanel2.add(btnHoaDon);
+        btnHoaDon.setBounds(0, 240, 140, 60);
 
-        btnNhanVien.setBackground(new java.awt.Color(255, 204, 255));
-        btnNhanVien.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        btnThongKe.setText("Thống Kê");
+        btnThongKe.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnThongKeMouseClicked(evt);
+            }
+        });
+        jPanel2.add(btnThongKe);
+        btnThongKe.setBounds(0, 300, 140, 60);
+
+        btnKhachHang.setText("Khách Hàng");
+        btnKhachHang.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnKhachHangMouseClicked(evt);
+            }
+        });
+        jPanel2.add(btnKhachHang);
+        btnKhachHang.setBounds(0, 360, 140, 60);
+
+        btnNhanVien.setText("Nhân Viên");
         btnNhanVien.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnNhanVienMouseClicked(evt);
             }
         });
-
-        jLabel11.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel11.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/logout.png"))); // NOI18N
-        jLabel11.setText("Nhân Viên");
-
-        javax.swing.GroupLayout btnNhanVienLayout = new javax.swing.GroupLayout(btnNhanVien);
-        btnNhanVien.setLayout(btnNhanVienLayout);
-        btnNhanVienLayout.setHorizontalGroup(
-            btnNhanVienLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(btnNhanVienLayout.createSequentialGroup()
-                .addComponent(jLabel11)
-                .addGap(0, 17, Short.MAX_VALUE))
-        );
-        btnNhanVienLayout.setVerticalGroup(
-            btnNhanVienLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnNhanVienLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-
+        btnNhanVien.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNhanVienActionPerformed(evt);
+            }
+        });
         jPanel2.add(btnNhanVien);
-        btnNhanVien.setBounds(0, 510, 138, 60);
+        btnNhanVien.setBounds(0, 420, 140, 60);
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1070, 640));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnProductMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnProductMouseClicked
+    private void btnVoucherActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoucherActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnVoucherActionPerformed
+
+    private void btnNhanVienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNhanVienActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnNhanVienActionPerformed
+
+    private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnExitActionPerformed
+
+    private void btnSanPhamMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSanPhamMouseClicked
+        // TODO add your handling code here:
         setpanel(new SanPham());
-    }//GEN-LAST:event_btnProductMouseClicked
+        JButton[] btn1= {btnBanHang,btnExit,btnHoaDon,btnKhachHang,btnNhanVien,btnThongKe,btnVoucher};
+        JButton[] btn2= {btnSanPham};
+        for (JButton btn22 : btn2) {
+            btn22.setBackground(new Color(103,204,255));
+        }
+        for (JButton btn11 : btn1) {
+            btn11.setBackground(new Color(204,255,255));
+        }
+    }//GEN-LAST:event_btnSanPhamMouseClicked
 
-    private void btnSaleMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSaleMouseClicked
+    private void btnBanHangMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBanHangMouseClicked
+        // TODO add your handling code here:
         setpanel(new BanHang());
-    }//GEN-LAST:event_btnSaleMouseClicked
+        JButton[] btn1= {btnSanPham,btnExit,btnHoaDon,btnKhachHang,btnNhanVien,btnThongKe,btnVoucher};
+        JButton[] btn2= {btnBanHang};
+        for (JButton btn22 : btn2) {
+            btn22.setBackground(new Color(103,204,255));
+        }
+        for (JButton btn11 : btn1) {
+            btn11.setBackground(new Color(204,255,255));
+        }
+    }//GEN-LAST:event_btnBanHangMouseClicked
 
-    private void btnBillMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBillMouseClicked
-        setpanel(new HoaDonChiTiet());
-    }//GEN-LAST:event_btnBillMouseClicked
-
-    private void btnPropertiesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPropertiesMouseClicked
-        setpanel(new ThuocTinh());
-    }//GEN-LAST:event_btnPropertiesMouseClicked
-
-    private void btnBill1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBill1MouseClicked
+    private void btnVoucherMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVoucherMouseClicked
+        // TODO add your handling code here:
         setpanel(new KhuyenMai());
-    }//GEN-LAST:event_btnBill1MouseClicked
+        JButton[] btn1= {btnBanHang,btnExit,btnHoaDon,btnKhachHang,btnNhanVien,btnThongKe,btnSanPham};
+        JButton[] btn2= {btnVoucher};
+        for (JButton btn22 : btn2) {
+            btn22.setBackground(new Color(103,204,255));
+        }
+        for (JButton btn11 : btn1) {
+            btn11.setBackground(new Color(204,255,255));
+        }
+    }//GEN-LAST:event_btnVoucherMouseClicked
 
-    private void jLabel8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel8MouseClicked
-        setpanel(new KhuyenMai());
-    }//GEN-LAST:event_jLabel8MouseClicked
-
-    private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked
+    private void btnHoaDonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnHoaDonMouseClicked
+        // TODO add your handling code here:
         setpanel(new HoaDonChiTiet());
-    }//GEN-LAST:event_jLabel5MouseClicked
+        JButton[] btn1= {btnBanHang,btnExit,btnSanPham,btnKhachHang,btnNhanVien,btnThongKe,btnVoucher};
+        JButton[] btn2= {btnHoaDon};
+        for (JButton btn22 : btn2) {
+            btn22.setBackground(new Color(103,204,255));
+        }
+        for (JButton btn11 : btn1) {
+            btn11.setBackground(new Color(204,255,255));
+        }
+    }//GEN-LAST:event_btnHoaDonMouseClicked
 
-    private void jLabel10MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel10MouseClicked
-        setpanel(new ThuocTinh());
-    }//GEN-LAST:event_jLabel10MouseClicked
-
-    private void btnStatisticsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnStatisticsMouseClicked
+    private void btnThongKeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnThongKeMouseClicked
+        // TODO add your handling code here:
         setpanel(new ThongKe());
-    }//GEN-LAST:event_btnStatisticsMouseClicked
+        JButton[] btn1= {btnBanHang,btnExit,btnHoaDon,btnKhachHang,btnNhanVien,btnSanPham,btnVoucher};
+        JButton[] btn2= {btnThongKe};
+        for (JButton btn22 : btn2) {
+            btn22.setBackground(new Color(103,204,255));
+        }
+        for (JButton btn11 : btn1) {
+            btn11.setBackground(new Color(204,255,255));
+        }
+    }//GEN-LAST:event_btnThongKeMouseClicked
 
-    private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
-        setpanel(new ThongKe());
-    }//GEN-LAST:event_jLabel2MouseClicked
+    private void btnKhachHangMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnKhachHangMouseClicked
+        // TODO add your handling code here:
+        setpanel(new KhachHang());
+        JButton[] btn1= {btnBanHang,btnExit,btnHoaDon,btnSanPham,btnNhanVien,btnThongKe,btnVoucher};
+        JButton[] btn2= {btnKhachHang};
+        for (JButton btn22 : btn2) {
+            btn22.setBackground(new Color(103,204,255));
+        }
+        for (JButton btn11 : btn1) {
+            btn11.setBackground(new Color(204,255,255));
+        }
+    }//GEN-LAST:event_btnKhachHangMouseClicked
 
     private void btnNhanVienMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnNhanVienMouseClicked
-         setpanel(new NhanVien());
+        // TODO add your handling code here:
+        setpanel(new NhanVien());
+        JButton[] btn1= {btnBanHang,btnExit,btnHoaDon,btnKhachHang,btnSanPham,btnThongKe,btnVoucher};
+        JButton[] btn2= {btnNhanVien};
+        for (JButton btn22 : btn2) {
+            btn22.setBackground(new Color(103,204,255));
+        }
+        for (JButton btn11 : btn1) {
+            btn11.setBackground(new Color(204,255,255));
+        }
     }//GEN-LAST:event_btnNhanVienMouseClicked
 
-    private void btnCustomerMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCustomerMouseClicked
-        setpanel(new KhachHang());
-    }//GEN-LAST:event_btnCustomerMouseClicked
-
-    private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
-        setpanel(new BanHang());
-    }//GEN-LAST:event_jLabel4MouseClicked
+    private void btnExitMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnExitMouseClicked
+        // TODO add your handling code here:
+        JButton[] btn1= {btnBanHang,btnSanPham,btnHoaDon,btnKhachHang,btnNhanVien,btnThongKe,btnVoucher};
+        JButton[] btn2= {btnExit};
+        for (JButton btn22 : btn2) {
+            btn22.setBackground(new Color(103,204,255));
+        }
+        for (JButton btn11 : btn1) {
+            btn11.setBackground(new Color(204,255,255));
+        }setVisible(false);
+        new DanhNhap().setVisible(true);
+            
+    }//GEN-LAST:event_btnExitMouseClicked
 
     /**
      * @param args the command line arguments
@@ -522,25 +385,15 @@ public class mainView extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel btnBill;
-    private javax.swing.JPanel btnBill1;
-    private javax.swing.JPanel btnCustomer;
-    private javax.swing.JPanel btnExit;
-    private javax.swing.JPanel btnNhanVien;
-    private javax.swing.JPanel btnProduct;
-    private javax.swing.JPanel btnProperties;
-    private javax.swing.JPanel btnSale;
-    private javax.swing.JPanel btnStatistics;
+    private javax.swing.JButton btnBanHang;
+    private javax.swing.JButton btnExit;
+    private javax.swing.JButton btnHoaDon;
+    private javax.swing.JButton btnKhachHang;
+    private javax.swing.JButton btnNhanVien;
+    private javax.swing.JButton btnSanPham;
+    private javax.swing.JButton btnThongKe;
+    private javax.swing.JButton btnVoucher;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;

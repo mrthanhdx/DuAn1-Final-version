@@ -118,6 +118,9 @@ public class User {
     public boolean isTrangThai() {
         return TrangThai;
     }
+     public boolean getTrangThai() {
+        return TrangThai;
+    }
 
     public void setTrangThai(boolean TrangThai) {
         this.TrangThai = TrangThai;

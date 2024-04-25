@@ -10,6 +10,7 @@ import model.HoaDon;
 import java.sql.*;
 import connection.ConenctionProvider;
 import java.util.ArrayList;
+import java.util.Collections;
 
 /**
  *
@@ -41,6 +42,7 @@ public class HoaDonServiceImpl implements hoaDonInterface {
                 list.add(hd);
 
             }
+            Collections.reverse(list); 
             return list;
         } catch (Exception e) {
             e.printStackTrace();
@@ -98,5 +100,22 @@ public class HoaDonServiceImpl implements hoaDonInterface {
             return false;
         }
     }
+
+    @Override
+    public boolean updateThanhToan(int idHD) {
+        
+        try {
+            String sql = "UPDATE HoaDon SET TinhTrang = 1,NgayThanhToan = GetDate() WHERE ID = ?";
+            PreparedStatement stmt = con.prepareStatement(sql);
+            stmt.setDouble(1, idHD);
+            stmt.execute();
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+    
+    
 
 }

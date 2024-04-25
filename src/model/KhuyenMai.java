@@ -6,96 +6,80 @@
 package model;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 /**
  *
  * @author ADMIN
  */
 public class KhuyenMai {
-    private String ID,TenKM,HinhThucKM,NgayBatDau,NgayKetThuc;
-    private Double GiaTriGiam;
-    private int Trangthai;
+    private int id;
+    private String tenKhuyenMai;
+    private String hinhThucKM;
+    private String giaTriGiam;
+    private int soLuong;
+    private String codeKhuyenMai;
 
-    public KhuyenMai() {
+    public int getId() {
+        return id;
     }
 
-    public KhuyenMai(String ID, String TenKM, String HinhThucKM, String NgayBatDau, String NgayKetThuc, Double GiaTriGiam,int Trangthai) {
-        this.ID = ID;
-        this.TenKM = TenKM;
-        this.HinhThucKM = HinhThucKM;
-        this.NgayBatDau = NgayBatDau;
-        this.NgayKetThuc = NgayKetThuc;
-        this.GiaTriGiam = GiaTriGiam;
-        this.Trangthai = Trangthai;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public KhuyenMai(String TenKM, String HinhThucKM, String NgayBatDau, String NgayKetThuc, Double GiaTriGiam,int Trangthai) {
-        this.TenKM = TenKM;
-        this.HinhThucKM = HinhThucKM;
-        this.NgayBatDau = NgayBatDau;
-        this.NgayKetThuc = NgayKetThuc;
-        this.GiaTriGiam = GiaTriGiam;
-        this.Trangthai = Trangthai;
+    public String getTenKhuyenMai() {
+        return tenKhuyenMai;
     }
 
-    public int getTrangthai() {
-        return Trangthai;
-    }
-
-    public void setTrangthai(int Trangthai) {
-        this.Trangthai = Trangthai;
-    }
-
-    public String getID() {
-        return ID;
-    }
-
-    public void setID(String ID) {
-        this.ID = ID;
-    }
-
-    public String getTenKM() {
-        return TenKM;
-    }
-
-    public void setTenKM(String TenKM) {
-        this.TenKM = TenKM;
+    public void setTenKhuyenMai(String tenKhuyenMai) {
+        this.tenKhuyenMai = tenKhuyenMai;
     }
 
     public String getHinhThucKM() {
-        return HinhThucKM;
+        return hinhThucKM;
     }
 
-    public void setHinhThucKM(String HinhThucKM) {
-        this.HinhThucKM = HinhThucKM;
+    public void setHinhThucKM(String hinhThucKM) {
+        this.hinhThucKM = hinhThucKM;
+    }
+    
+    public String getGiaTriGiam() {
+        return giaTriGiam;
     }
 
-    public String getNgayBatDau() {
-        return NgayBatDau;
+    public void setGiaTriGiam(String giaTriGiam) {
+        this.giaTriGiam = giaTriGiam;
     }
 
-    public void setNgayBatDau(String NgayBatDau) {
-        this.NgayBatDau = NgayBatDau;
+    public int getSoLuong() {
+        return soLuong;
     }
 
-    public String getNgayKetThuc() {
-        return NgayKetThuc;
+    public void setSoLuong(int soLuong) {
+        this.soLuong = soLuong;
     }
 
-    public void setNgayKetThuc(String NgayKetThuc) {
-        this.NgayKetThuc = NgayKetThuc;
-    }
+   
 
-    public Double getGiaTriGiam() {
-        return GiaTriGiam;
-    }
+    public class KMData {
 
-    public void setGiaTriGiam(Double GiaTriGiam) {
-        this.GiaTriGiam = GiaTriGiam;
-    }
-    @Override
-    public String toString() {
-        return TenKM;
+        private static List<String> data = new ArrayList<>();
+
+        public static List<String> getdata() {
+            data.add("%");
+            data.add("VND");
+            return data;
+        }
     }
     
 }

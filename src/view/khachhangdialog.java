@@ -63,35 +63,53 @@ public class khachhangdialog extends javax.swing.JFrame {
 
     private void addKhachHang() {
         model.KhachHang kh = new model.KhachHang();
-        String tenKh = txtTen1.getText();
-        String ngaySinhkh = txtNgaySinh.getText();
+
+        String tenKh = txtTen1.getText().trim();
+        if (tenKh.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Vui lòng nhập Tên khách hàng.");
+            return;
+        }
+
+        String ngaySinhKh = txtNgaySinh.getText().trim();
+        if (ngaySinhKh.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Vui lòng nhập Ngày sinh khách hàng.");
+            return;
+        }
+
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
         Date ngaySinh;
         try {
-            ngaySinh = sdf.parse(ngaySinhkh);
+            ngaySinh = sdf.parse(ngaySinhKh);
         } catch (ParseException ex) {
-            JOptionPane.showMessageDialog(this, "Khong dung dinh dang dd/MM/yyyy");
-
+            JOptionPane.showMessageDialog(this, "Ngày sinh không đúng định dạng dd/MM/yyyy.");
             return;
         }
-        boolean gt = false;
-        if (rdoNam.isSelected()) {
-            gt = true;
+
+        String sdt = txtSdt.getText().trim();
+        if (sdt.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Vui lòng nhập Số điện thoại khách hàng.");
+            return;
         }
 
-        String Sdt = txtSdt.getText();
-        String Email = txtEmail.getText();
+        String email = txtEmail.getText().trim();
+        if (email.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Vui lòng nhập Email khách hàng.");
+            return;
+        }
+
+        boolean gt = rdoNam.isSelected();
 
         kh.setTen(tenKh);
         kh.setNgaysinh(ngaySinh);
         kh.setGioitinh(gt);
-        kh.setSdt(Sdt);
-        kh.setEmail(Email);
+        kh.setSdt(sdt);
+        kh.setEmail(email);
+
         boolean addResult = khachHangServiceImpl.add(kh);
         if (addResult) {
-            JOptionPane.showMessageDialog(this, "Add SinhVien thanh cong.");
+            JOptionPane.showMessageDialog(this, "Add khách hàng thành công.");
         } else {
-            JOptionPane.showMessageDialog(this, "Add SinhVien khong thanh cong.");
+            JOptionPane.showMessageDialog(this, "Add khách hàng không thành công.");
         }
     }
 
@@ -112,6 +130,7 @@ public class khachhangdialog extends javax.swing.JFrame {
     private void initComponents() {
 
         jRadioButton1 = new javax.swing.JRadioButton();
+        buttonGroup1 = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblThongtinkhachhang = new javax.swing.JTable();
@@ -130,6 +149,8 @@ public class khachhangdialog extends javax.swing.JFrame {
         rdoNu = new javax.swing.JRadioButton();
         jButton1 = new javax.swing.JButton();
         btnChon = new javax.swing.JButton();
+        txtSearchKhachHang = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
 
         jRadioButton1.setText("jRadioButton1");
 
@@ -181,8 +202,11 @@ public class khachhangdialog extends javax.swing.JFrame {
 
         jLabel7.setText("Giới Tính");
 
+        buttonGroup1.add(rdoNam);
+        rdoNam.setSelected(true);
         rdoNam.setText("Nam");
 
+        buttonGroup1.add(rdoNu);
         rdoNu.setText("Nữ");
         rdoNu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -197,12 +221,20 @@ public class khachhangdialog extends javax.swing.JFrame {
             }
         });
 
-        btnChon.setText("Chọn Khách Hàng");
+        btnChon.setText("Chọn");
         btnChon.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnChonActionPerformed(evt);
             }
         });
+
+        txtSearchKhachHang.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtSearchKhachHangKeyReleased(evt);
+            }
+        });
+
+        jLabel1.setText("Nhập SDT");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -222,7 +254,7 @@ public class khachhangdialog extends javax.swing.JFrame {
                         .addGap(28, 28, 28))
                     .addComponent(jLabel4)
                     .addComponent(txtNgaySinh, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -230,21 +262,19 @@ public class khachhangdialog extends javax.swing.JFrame {
                                 .addComponent(txtEmail)
                                 .addComponent(txtSdt, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jLabel5)
-                            .addComponent(jLabel6))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                            .addComponent(jLabel6)
+                            .addComponent(jLabel1))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnChon)
-                        .addGap(29, 29, 29)))
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btnLammoi)
-                            .addComponent(btnThem, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(47, 47, 47))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jButton1)
-                        .addGap(22, 22, 22))))
+                            .addComponent(btnThem, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(txtSearchKhachHang, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(85, 85, 85)
+                        .addComponent(btnChon)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton1))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -259,7 +289,7 @@ public class khachhangdialog extends javax.swing.JFrame {
                         .addComponent(jLabel4)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txtNgaySinh, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
                         .addComponent(jLabel7))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(8, 8, 8)
@@ -276,18 +306,21 @@ public class khachhangdialog extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(0, 0, Short.MAX_VALUE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGap(28, 28, 28)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnChon, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtSearchKhachHang, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED))
                     .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(rdoNam)
-                            .addComponent(rdoNu))
-                        .addGap(31, 31, 31))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(btnChon, javax.swing.GroupLayout.DEFAULT_SIZE, 36, Short.MAX_VALUE)
-                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
+                            .addComponent(rdoNu)
+                            .addComponent(jLabel1))
+                        .addGap(31, 31, 31)))
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
@@ -351,6 +384,24 @@ public class khachhangdialog extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnChonActionPerformed
 
+    private void txtSearchKhachHangKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSearchKhachHangKeyReleased
+        String txtSearchKH = txtSearchKhachHang.getText();
+        model = (DefaultTableModel) tblThongtinkhachhang.getModel();
+        model.setRowCount(0);
+        for (model.KhachHang kh : khachHangServiceImpl.getAll()) {
+            if (kh.getSdt().contains(txtSearchKH)) {
+                Object rowData[] = new Object[6];
+                rowData[0] = kh.getId();
+                rowData[1] = kh.getTen();
+                rowData[2] = date.format(kh.getNgaysinh());
+                rowData[3] = kh.isGioitinh() ? "Nam" : "Nữ";
+                rowData[4] = kh.getSdt();
+                rowData[5] = kh.getEmail();
+                model.addRow(rowData);
+            }
+        }
+    }//GEN-LAST:event_txtSearchKhachHangKeyReleased
+
 //    /**
 ////     * @param args the command line arguments
 ////     */
@@ -390,7 +441,9 @@ public class khachhangdialog extends javax.swing.JFrame {
     private javax.swing.JButton btnChon;
     private javax.swing.JButton btnLammoi;
     private javax.swing.JButton btnThem;
+    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -405,6 +458,7 @@ public class khachhangdialog extends javax.swing.JFrame {
     private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtNgaySinh;
     private javax.swing.JTextField txtSdt;
+    private javax.swing.JTextField txtSearchKhachHang;
     private javax.swing.JTextField txtTen1;
     // End of variables declaration//GEN-END:variables
 }

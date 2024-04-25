@@ -21,5 +21,5 @@ public interface SanPhamChiTietInterface {
     List<SanPhamChiTiet> getAll();
     public int add(SanPhamChiTiet spct);
     public int update(SanPhamChiTiet sp,String id);
-
+    public boolean phucHoiSoLuong(int maSP,int soLuongMoi);
 }

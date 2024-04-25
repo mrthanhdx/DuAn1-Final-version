@@ -7,6 +7,7 @@ package service;
 import interfacee.SanPhamChiTietInterface;
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import model.ChatLieu;
 import model.KichCo;
@@ -102,6 +103,7 @@ public class SanPhamChiTietService implements SanPhamChiTietInterface {
                 list.add(sp);
 
             }
+            Collections.reverse(list);
             return list;
         } catch (Exception e) {
             return null;
@@ -169,6 +171,21 @@ public class SanPhamChiTietService implements SanPhamChiTietInterface {
         } catch (Exception e) {
             e.printStackTrace();
             return 0;
+        }
+    }
+
+    @Override
+    public boolean phucHoiSoLuong(int maSP, int soLuongMoi) {
+      String sql = "update chiTietSP set soLuongTon = ? where id = ?";
+        try {
+            PreparedStatement stmt = con.prepareStatement(sql);
+            stmt.setInt(1, soLuongMoi);
+            stmt.setInt(2, maSP);
+            stmt.execute();
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
         }
     }
 

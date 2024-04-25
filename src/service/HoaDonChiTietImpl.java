@@ -9,6 +9,7 @@ import java.sql.*;
 import model.HoaDonChiTiet;
 import connection.ConenctionProvider;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import model.HoaDon;
 import model.SanPhamChiTiet;
@@ -40,6 +41,7 @@ public class HoaDonChiTietImpl implements HoaDonChiTietInterface {
                 hdct.setSoluong(rs.getInt("soLuong"));
                 list.add(hdct);
             }
+            Collections.reverse(list);
             return list;
         } catch (Exception e) {
             e.printStackTrace();
@@ -49,7 +51,7 @@ public class HoaDonChiTietImpl implements HoaDonChiTietInterface {
 
     @Override
     public boolean addHDCT(HoaDon hoaDon, SanPhamChiTiet sanPhamChiTiet, int soLuong, double DonGia) {
-           try {
+        try {
             String sql = "insert into HoaDonChiTiet(IdHD,IdCTSP,SoLuong,DonGia) values(?,?,?,?)";
             PreparedStatement stmt = conn.prepareStatement(sql);
             stmt.setInt(1, hoaDon.getId());
@@ -81,7 +83,7 @@ public class HoaDonChiTietImpl implements HoaDonChiTietInterface {
 
     @Override
     public boolean deleteAllHDCT(int IdHD) {
-         try {
+        try {
             String sql = "DELETE FROM HoaDonChiTiet WHERE IdHD = ?";
             PreparedStatement stmt = conn.prepareStatement(sql);
             stmt.setInt(1, IdHD);
@@ -93,4 +95,35 @@ public class HoaDonChiTietImpl implements HoaDonChiTietInterface {
         }
     }
 
+    @Override
+    public boolean updateSoLuongSP(int id, int soLuong) {
+        try {
+            String sql = "UPDATE ChitietSP set soLuongTon = ? where id = ?";
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            stmt.setInt(1, soLuong);
+            stmt.setInt(2, id);
+            stmt.execute();
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+  @Override
+    public boolean updateSoLuongSPHoaDonCT(int IDHD, int IDSPCT, int soLuong) {
+        try {
+            String sql = "UPDATE HOADONCHITIET SET SoLuong = ? where idHD = ? and IDCTSP = ?";
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            stmt.setInt(1, soLuong);
+            stmt.setInt(2, IDHD);
+            stmt.setInt(3, IDSPCT);
+            stmt.execute();
+            return true;
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+
+    }
 }

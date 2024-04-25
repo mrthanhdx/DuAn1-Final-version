@@ -4,6 +4,7 @@
  */
 package service;
 
+import interfacee.KhachHangInterface;
 import connection.ConenctionProvider;
 import java.sql.Connection;
 import java.sql.PreparedStatement;

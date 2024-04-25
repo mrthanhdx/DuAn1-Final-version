@@ -17,4 +17,5 @@ public interface hoaDonInterface {
     public boolean xoaHoaDon(HoaDon hd,int idHD);
     public boolean updateMaKHforHoaDon(int idKh,int idHD);
     public boolean updateTongTien(int idHD,double tongTien);
+    public boolean updateThanhToan(int idHD);
 }

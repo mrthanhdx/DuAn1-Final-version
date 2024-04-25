@@ -18,4 +18,6 @@ public interface HoaDonChiTietInterface {
     public boolean addHDCT(HoaDon hoaDon,SanPhamChiTiet sanPhamChiTiet,int soLuong, double DonGia);
     public boolean deleteHDCT(int IdHD,int IdSP);
     public boolean deleteAllHDCT(int IdHD);
+    public boolean updateSoLuongSP(int id, int soLuong);
+    public boolean updateSoLuongSPHoaDonCT(int IDHD, int IDSPCT, int soLuong);
 }

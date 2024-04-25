@@ -6,7 +6,7 @@ public class ConenctionProvider {
     // Connection
     private static Connection conn;
     private static String DB_SERVERNAME = "localhost";
-    private static String DB_DATABASENAME = "DuAn1";
+    private static String DB_DATABASENAME = "DuAn2";
     private static String DB_USERNAME = "sa";
     private static String DB_PASSWORD = "12345678";
    
